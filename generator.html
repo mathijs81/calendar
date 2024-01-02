@@ -13,10 +13,10 @@
       <p id="todaysDate"></p>
 
       Start date:
-      <input type="date" id="start"><br>
+      <input type="date" id="start" value="2023-01-01"><br>
       End date:
-      <input type="date" id="end"><br>
-      <button onclick="getDates()">Create Calendar</button>
+      <input type="date" id="end" value="2023-12-31"><br>
+      <button id="create" onclick="getDates()">Create Calendar</button>
 
       <p id="Output"></p>
 
@@ -26,5 +26,8 @@
       
     </div>
 
+  <script>
+    document.getElementById('create').click();
+  </script>
 </body>
 </html>

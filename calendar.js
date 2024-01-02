@@ -2,7 +2,8 @@ function getDates() {
     var startDate = new Date(document.getElementById("start").value + 
                              "T12:00:00");
     var endDate = new Date(document.getElementById("end").value + "T12:00:00");
-    startDate.setDate(startDate.getDate() - startDate.getDay());
+
+    startDate.setDate(startDate.getDate() - startDate.getDay() + 1);
     endDate.setDate(endDate.getDate() - endDate.getDay());
     document.getElementById("Output").innerHTML = startDate.toDateString() + "<br />" + 
       endDate;
@@ -17,18 +18,21 @@ function genCalendar(startDate, endDate) {
     cal.innerHTML = "";
     var table = document.createElement("table");
     var header = document.createElement("tr");
-    header.innerHTML = "<th>Sunday</th>\
-                        <th>Monday</th>\
+    header.innerHTML = "<th>Monday</th>\
                         <th>Tuesday</th>\
                         <th>Wednesday</th>\
                         <th>Thursday</th>\
                         <th>Friday</th>\
-                        <th>Saturday</th>";
+                        <th>Saturday</th>\
+                        <th>Sunday</th>";
     table.appendChild(header);
 	var months = ["January", "February", "March", "April", "May", "June", 
           "July", "August", "September", "October","November","December"];
-    var colours = ["#87CEFF","#B9D3EE","#97FFFF","#C1FFC1","#CAFF70","#FFF68F",
-                   "#FFDAB9","#FFB6C1","#FFEC8B","#FFD39B","#FFEFDB","#F0F8FF"];
+    // var colours = ["#87CEFF","#B9D3EE","#97FFFF","#C1FFC1","#CAFF70","#FFF68F",
+    //                "#FFDAB9","#FFB6C1","#FFEC8B","#FFD39B","#FFEFDB","#F0F8FF"];
+    var colours = ["#87CEFF", 
+        "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff",
+        "#87CEFF", ]
     var cursor = startDate;
     var start = true;
     var month;
@@ -41,7 +45,8 @@ function genCalendar(startDate, endDate) {
                 cell.innerHTML += " " + months[cursor.getMonth()];
                 month = cursor.getMonth();
             }
-            cell.setAttribute("style", "background-color:" + colours[month]);
+            cell.setAttribute("style", "background-color:" + colours[cursor.getDay()]);
+            cell.setAttribute("class", "day" + cursor.getDate());
             row.appendChild(cell);
             cursor.setDate(cursor.getDate() + 1);
             start = false;

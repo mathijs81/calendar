@@ -3,8 +3,16 @@ table {
 	table-layout: fixed;
 }
 table, td, th {
-	border: 1px solid black;
+	border: 1px solid #888;
 	border-collapse: collapse;
+	font-size: 12px;
+	font-family: "Fira Code";
+}
+.day1 {
+	border-left: 2px solid black;
+}
+.day1, .day2, .day3, .day4, .day5, .day6, .day7 {
+	border-top: 2px solid black;
 }
 th {
 	background-color: #DDDDDD;
@@ -22,5 +30,8 @@ td {
 	
 	#cal {
 		visibility: visible;
+	}
+	td {
+		height: 35px;
 	}
 }
